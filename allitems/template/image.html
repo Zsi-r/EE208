@@ -1,0 +1,76 @@
+$def with (list,command)
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="static/assets/img/favicon.ico">
+
+    <title>F&B | </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/assets/css/bootstrap.css" rel="stylesheet">
+	<link href="static/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="static/assets/css/elusive-webfont.css" rel="stylesheet" >
+    <link href="static/assets/css/animate.css" rel="stylesheet">
+    <link href="static/assets/css/pe-icons.css" rel="stylesheet">
+ 	<link href="static/assets/css/style.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+
+    <script src="static/assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="static/assets/js/modernizr.custom.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="static/assets/js/html5shiv.js"></script>
+      <script src="static/assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+
+  <div id="preloader"></div>
+
+  <a class="imgpagetitle" href="/">F&B</a>
+
+    <div id="headerwrap" name="home" class="fullheight">
+		<header class="clearfix fullheight">
+			<div class="vertical-center">
+		 		<p class="animated slideInLeft">Searching results for :</p>
+		 		<img src="$command" class="animated slideInRight card srcimg">
+		 		<a href="#about" class="btn homebtn smoothScroll"><i class="el-icon-chevron-down homeicon"></i>showed below<i class="el-icon-chevron-down homeicon"></i></a>
+	 		</div>
+  		</header>
+    </div>
+
+	<!--  CONTENT WRAPPER -->
+	<div id="content-wrapper">
+
+		<section id="about" class="container page-section">
+			<div class="white">
+				<hr class="fade-down divider-spacer">
+				<div class="card-columns">
+					$for i in list:
+						<div class="card fade-down">
+							<p class="cardtitle">$i[1]</p>
+							  <a href="$:i[0]">
+							  <img class="card-img-top probootstrap-animate" src="$:i[2]" data-animate-effect="fadeIn">
+							  </a>
+						</div>
+				</div>
+			</div>
+		</section>
+	</div>
+  	<div class="bottom">
+	</div>
+
+	<script type="text/javascript" src="static/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="static/assets/js/plugins.js"></script>
+	<script type="text/javascript" src="static/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="static/assets/js/init.js"></script>
+  </body>
+</html>

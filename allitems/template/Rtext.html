@@ -1,0 +1,137 @@
+$def with (res, data, maxpage, cpage, meth, keyList)
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="static/assets/img/favicon.ico">
+
+    <title>F&B | </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/assets/css/elusive-webfont.css" rel="stylesheet" >
+    <link href="static/assets/css/animate.css" rel="stylesheet">
+    <link href="static/assets/css/pe-icons.css" rel="stylesheet">
+ 	<link href="static/assets/css/style.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+
+    <script src="static/assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="static/assets/js/modernizr.custom.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="static/assets/js/html5shiv.js"></script>
+      <script src="static/assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+
+  <div id="preloader"></div>
+
+  	<div id="search-wrapper">
+		<form action="/s" method="GET">
+			<input  type="text" id="text" placeholder="搜索您想要的足篮资讯" name="FB" >
+			<button type="submit" class="trp-btn" name="search" value="search"></button>
+		</form>
+  	</div>
+
+  	<div id="navbar-main">
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/"><h1>F&B</h1></a>
+					<button type="button" class="navbar-toggle dropdown-toggle" id="open-menu" data-toggle="dropdown" data-target="#main-navigation">
+						<i class="el-icon-lines"></i>
+					</button>
+				</div>
+				<div class="navbar-collapse collapse" id="main-navigation">
+					<form action="/s?FB=$data" method="GET">
+                		<input type="hidden" name="FB" value="$data">
+							<ul class="nav navbar-nav">
+								<li><button type="submit" formaction="/s" name="mysort" value="rel" method="GET">R</button></li>
+								<li><button type="submit" formaction="/s" name="mysort" value="td" method="GET">TimeDown</button></li>
+								<li><button type="submit" formaction="/s" name="mysort" value="tu" method="GET">TimeUp</button></li>
+								<li> <a href="#" class="search-trigger"><i class="el-icon-search"></i></a></li>
+							</ul>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <div id="headerwrap" name="home" class="fullheight">
+		<header class="clearfix fullheight">
+			<div class="vertical-center">
+		 		<p class="animated slideInLeft">Searching results for :</p>
+		 		<p class="animated slideInRight">$data</p>
+		 		<a href="#about" class="btn homebtn smoothScroll"><i class="el-icon-chevron-down homeicon"></i>showed below<i class="el-icon-chevron-down homeicon"></i></a>
+	 		</div>
+  		</header>
+    </div>
+
+	<!--  CONTENT WRAPPER -->
+	<div id="content-wrapper">
+
+		<section id="about" class="container page-section">
+			<div class="bottom">
+			</div>
+			<span class="fade-down note-message" >您可能对下列信息感兴趣：</span>
+			<div class="fade-down keywords">
+				<div class="list-inline">
+				$for key in keyList:
+					<li><form action="/s?FB=$key" method="GET">
+						<input type="hidden" name="FB" value="$key">
+						<button class="keys" type="submit" formaction="/s" name="mysort" value="rel" method="GET">$key</button>
+					</form></li>
+				</div>
+			</div>
+
+			<div class="white">
+				<hr class="fade-down divider-spacer">
+				$if res != [] and res != None:
+					$for i in res:
+						<div class="fade-down item">
+							<div class="title">
+								<a href="$i['url']">$i['title']</a>
+							</div>
+							<br>
+							<div class="highlight">$:i['keyword']</div>
+							<br>
+							<font color="#006d21"><i>网址: $:i['url']&nbsp;&nbsp;&nbsp;相关度:$:i['score']&nbsp;&nbsp;&nbsp;日期:$:i['date']</i></font>
+							<br>
+						</div>
+				$else:
+					<div class="item">
+						<p>对不起，没有相关的结果</p>
+					</div>
+			</div>
+
+			<div class="pageturn">
+				<form action="/s?FB=$data&mysort=$meth" method="GET">
+					<input type="hidden" name="FB" value="$data">
+					<input type="hidden" name="mysort" value="$meth">
+					$for i in range(1, maxpage):
+						$if(i == cpage):
+							<button class="currentpage" type="submit" formaction="/s" name="webpage" value="$i" method="GET">$i</button>&nbsp;
+						$else:
+							<button class="pagechange" type="submit" formaction="/s" name="webpage" value="$i" method="GET">$i</button>&nbsp;
+				</form>
+			</div>
+		</section>
+	</div>
+  	<div class="bottom">
+	</div>
+
+	<script type="text/javascript" src="static/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="static/assets/js/plugins.js"></script>
+
+	<script type="text/javascript" src="static/assets/js/init.js"></script>
+  </body>
+</html>
