@@ -32,4 +32,3 @@ initWeb.py: 在本文件中构建web.py框架，并联合各个组件。
 2. static文件夹中存放前端所需的css和JavaScript库文件，其中
     + allitems/static/style.css存放两个首页的css样式
     + allitems/static/assets/style.css存放两个搜索结果页面的css样式
-
