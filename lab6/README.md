@@ -7,7 +7,7 @@
 python 2.7
 
 # 运行方式
-在python terminal中运行web1.py，在浏览器中输入`http://localhost:8080`后即可在搜索框中输入待搜索的信息
+在python terminal中运行web1.py，在浏览器中输入`http://localhost:8080`后即可在搜索框中输入待搜索的信息。建议搜索框中输入`梅西`进行搜索。
 
 # 文件说明
 finalseg:   中文分词库
