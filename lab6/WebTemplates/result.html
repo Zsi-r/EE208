@@ -1,0 +1,18 @@
+$def with (command, res_list,searcher)
+
+<form action="/s" method="GET">
+    Google:<input type="text" name="Google">
+    <input type="submit" name="search" value="Search">
+</form>
+
+<h1>Search Result for "$command"</h1>
+    <br><br>
+    $for i in res_list:
+        <a href="$i['url']"><font size = '4'><i>$i['title']</i></font></a>
+        <br>
+        $if i["highlight"] !=None:
+            <br>
+            $:i["highlight"].replace(' ','').replace('_blank_',' ').split("trydocument")[0].split("windowSTO")[0].strip("function")
+            <br>
+        <font color="Chartreuse"><i>$:i["url"]</i></font>
+        <br><br><br>
